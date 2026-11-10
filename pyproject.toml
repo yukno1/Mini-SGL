@@ -1,0 +1,29 @@
+[project]
+name = "minisgl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "torch>=2.15.0",
+]
+
+[project.scripts]
+minisgl = "minisgl.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/minisgl"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[[tool.uv.index]]
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu132", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
