@@ -5,7 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "huggingface-hub>=2.4.0",
+    "msgpack>=1.2.4",
+    "pyzmq>=27.3.0",
     "torch>=2.15.0",
+    "tqdm>=4.70.1",
+    "transformers>=5.22.2",
 ]
 
 [project.scripts]
