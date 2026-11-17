@@ -101,6 +101,7 @@ class FIMetadata(BaseAttnMetadata):
         （prefill 或 decode）。
     :param initialized: 该元数据是否已完成 ``plan``。
     """
+
     # fmt: off
     cu_seqlens_q_cpu:   torch.Tensor  # on cpu
     cu_seqlens_k_cpu:   torch.Tensor  # on cpu
@@ -352,7 +353,7 @@ class FlashInferBackend(BaseAttnBackend):
         if max_seqlen_q == 1:  # decode with all extend_len = 1
             # decode：每请求恰 1 个 q token，前缀和即 0,1,2,...
             cu_seqlens_q_cpu = torch.arange(0, padded_size + 1, **CPU_KWARGS)
-        elif all(l == 0 for l in cached_lens):  # prefill with no cache hit
+        elif all(i == 0 for i in cached_lens):  # prefill with no cache hit
             # 无前缀缓存命中：q 段与 k 段完全相同
             cu_seqlens_q_cpu = cu_seqlens_k_cpu
         else:  # normal extend prefill, with partial cache hit
