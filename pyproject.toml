@@ -5,10 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "flashinfer-python>=0.7.4",
     "huggingface-hub>=2.4.0",
     "msgpack>=1.2.4",
     "numpy>=2.5.4",
     "pyzmq>=27.3.0",
+    "sgl-kernel>=0.3.21",
     "torch>=2.15.0",
     "tqdm>=4.70.1",
     "transformers>=5.22.2",
